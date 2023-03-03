@@ -1,0 +1,156 @@
+syntax="proto3";
+package example;
+option go_package = "/api";
+
+import "google/protobuf/empty.proto";
+
+service AllTypeTableService { 
+    rpc CreateAllTypeTable(AllTypeTable)returns(AllTypeTable);
+    rpc DeleteAllTypeTable(AllTypeTableId)returns(google.protobuf.Empty);
+    rpc UpdateAllTypeTable(UpdateAllTypeTableReq)returns(AllTypeTable);
+    rpc GetAllTypeTable(AllTypeTableId)returns(AllTypeTable);
+    rpc ListAllTypeTables(ListAllTypeTablesReq)returns(ListAllTypeTablesResp);
+}
+
+message AllTypeTable {
+    //自增id
+    int64	id = 1 ; // @gotags: json:"id"
+    //小小整型
+    int64	t_int = 2 ; // @gotags: json:"t_int"
+    //小整数
+    int64	s_int = 3 ; // @gotags: json:"s_int"
+    //中整数
+    int64	m_int = 4 ; // @gotags: json:"m_int"
+    //大整数
+    int64	b_int = 5 ; // @gotags: json:"b_int"
+    //小浮点
+    float	f32 = 6 ; // @gotags: json:"f32"
+    //大浮点
+    double	f64 = 7 ; // @gotags: json:"f64"
+    //
+    double	decimal_mysql = 8 ; // @gotags: json:"decimal_mysql"
+    //
+    string	char_m = 9 ; // @gotags: json:"char_m"
+    //
+    string	varchar_m = 10 ; // @gotags: json:"varchar_m"
+    //
+    string	json_m = 11 ; // @gotags: json:"json_m"
+    //
+    string	nvarchar_m = 12 ; // @gotags: json:"nvarchar_m"
+    //
+    string	nchar_m = 13 ; // @gotags: json:"nchar_m"
+    //
+    string	time_m = 14 ; // @gotags: json:"time_m"
+    //
+    string	date_m = 15 ; // @gotags: json:"date_m"
+    //
+    string	data_time_m = 16 ; // @gotags: json:"data_time_m"
+    //创建时间
+    string	timestamp_m = 17 ; // @gotags: json:"timestamp_m"
+    //更新时间
+    string	timestamp_update = 18 ; // @gotags: json:"timestamp_update"
+    //年
+    string	year_m = 19 ; // @gotags: json:"year_m"
+    //
+    string	t_text = 20 ; // @gotags: json:"t_text"
+    //
+    string	m_text = 21 ; // @gotags: json:"m_text"
+    //
+    string	text_m = 22 ; // @gotags: json:"text_m"
+    //
+    string	l_text = 23 ; // @gotags: json:"l_text"
+    //
+    bytes	binary_m = 24 ; // @gotags: json:"binary_m"
+    //
+    bytes	blob_m = 25 ; // @gotags: json:"blob_m"
+    //
+    bytes	l_blob = 26 ; // @gotags: json:"l_blob"
+    //
+    bytes	m_blob = 27 ; // @gotags: json:"m_blob"
+    //
+    bytes	t_blob = 28 ; // @gotags: json:"t_blob"
+    //
+    bytes	bit_m = 29 ; // @gotags: json:"bit_m"
+    //
+    string	enum_m = 30 ; // @gotags: json:"enum_m"
+    //
+    string	set_m = 31 ; // @gotags: json:"set_m"
+    //
+    int64	bool_m = 32 ; // @gotags: json:"bool_m"  
+}
+
+enum AllTypeTableField{
+    AllTypeTable_unknow = 0;
+    AllTypeTable_id = 1;
+    AllTypeTable_t_int = 2;
+    AllTypeTable_s_int = 3;
+    AllTypeTable_m_int = 4;
+    AllTypeTable_b_int = 5;
+    AllTypeTable_f32 = 6;
+    AllTypeTable_f64 = 7;
+    AllTypeTable_decimal_mysql = 8;
+    AllTypeTable_char_m = 9;
+    AllTypeTable_varchar_m = 10;
+    AllTypeTable_json_m = 11;
+    AllTypeTable_nvarchar_m = 12;
+    AllTypeTable_nchar_m = 13;
+    AllTypeTable_time_m = 14;
+    AllTypeTable_date_m = 15;
+    AllTypeTable_data_time_m = 16;
+    AllTypeTable_timestamp_m = 17;
+    AllTypeTable_timestamp_update = 18;
+    AllTypeTable_year_m = 19;
+    AllTypeTable_t_text = 20;
+    AllTypeTable_m_text = 21;
+    AllTypeTable_text_m = 22;
+    AllTypeTable_l_text = 23;
+    AllTypeTable_binary_m = 24;
+    AllTypeTable_blob_m = 25;
+    AllTypeTable_l_blob = 26;
+    AllTypeTable_m_blob = 27;
+    AllTypeTable_t_blob = 28;
+    AllTypeTable_bit_m = 29;
+    AllTypeTable_enum_m = 30;
+    AllTypeTable_set_m = 31;
+    AllTypeTable_bool_m = 32;   
+}
+
+message AllTypeTableId{
+    int64 id = 1 ; // @gotags: form:"id"
+}
+
+message UpdateAllTypeTableReq{
+
+    AllTypeTable all_type_table = 1 ;
+
+    repeated string update_mask  = 2 ;
+}
+
+
+message ListAllTypeTablesReq{
+    // number of page
+    int32 page = 1 ;// @gotags: form:"page"
+    // default 20
+    int32 page_size = 2 ;// @gotags: form:"page_size"
+    // order by field
+    AllTypeTableField order_by_field = 3 ; // @gotags: form:"order_by_field"
+    // ASC DESC
+    bool order_by_desc = 4; //@gotags: form:"order_by_desc"
+     // filter
+    repeated AllTypeTableFilter filters = 5 ; //@gotags: form:"filters"
+}
+
+message AllTypeTableFilter{
+     AllTypeTableField field = 1;
+    string op = 2;
+    string value = 3;
+}
+
+message ListAllTypeTablesResp{
+
+    repeated AllTypeTable all_type_tables = 1 ; // @gotags: json:"all_type_tables"
+
+    int32 total_count = 2 ; // @gotags: json:"total_count"
+    
+    int32 page_count = 3 ; // @gotags: json:"page_count"
+}
