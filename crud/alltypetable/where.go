@@ -3,7 +3,7 @@
 package alltypetable
 
 import (
-	"github.com/hongshengjie/crud/xsql"
+	"github.com/happycrud/crud/xsql"
 )
 
 type AllTypeTableWhere func(s *xsql.Selector)

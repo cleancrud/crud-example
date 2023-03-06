@@ -4,9 +4,9 @@ import (
 	"context"
 	"database/sql"
 
+	"github.com/happycrud/crud/xsql"
 	"github.com/hongshengjie/crud-example/crud/alltypetable"
 	"github.com/hongshengjie/crud-example/crud/user"
-	"github.com/hongshengjie/crud/xsql"
 )
 
 type Client struct {

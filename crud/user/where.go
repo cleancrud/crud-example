@@ -3,7 +3,7 @@
 package user
 
 import (
-	"github.com/hongshengjie/crud/xsql"
+	"github.com/happycrud/crud/xsql"
 )
 
 type UserWhere func(s *xsql.Selector)

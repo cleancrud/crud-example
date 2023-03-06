@@ -7,7 +7,7 @@ import (
 	"database/sql"
 	"errors"
 
-	"github.com/hongshengjie/crud/xsql"
+	"github.com/happycrud/crud/xsql"
 
 	"time"
 )
