@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/hongshengjie/crud-example/api"
-	"github.com/hongshengjie/crud-example/discovery"
+	"github.com/happycrud/crud-example/api"
+	"github.com/happycrud/crud-example/discovery"
 	"google.golang.org/grpc"
 )
 

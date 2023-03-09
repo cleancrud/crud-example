@@ -7,12 +7,12 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/hongshengjie/crud-example/api"
-	"github.com/hongshengjie/crud-example/crud"
-	"github.com/hongshengjie/crud-example/crud/user"
-	"github.com/hongshengjie/crud-example/service"
+	"github.com/happycrud/crud-example/api"
+	"github.com/happycrud/crud-example/crud"
+	"github.com/happycrud/crud-example/crud/user"
+	"github.com/happycrud/crud-example/service"
 
-	"github.com/hongshengjie/crud/xsql"
+	"github.com/happycrud/crud/xsql"
 )
 
 // linux   protoc  -I . -I /usr/local/include --go_out=. --go-grpc_out=.  user.api.proto
