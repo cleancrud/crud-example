@@ -4,9 +4,11 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/happycrud/crud-example/crud/alltypetable"
-	"github.com/happycrud/crud-example/crud/user"
-	"github.com/happycrud/crud/xsql"
+	"github.com/cleancrud/crud-example/crud/alltypetable"
+	"github.com/cleancrud/crud-example/crud/user"
+	"github.com/cleancrud/crud/xsql"
+
+	"github.com/cleancrud/crud/xsql/mysql"
 )
 
 type Client struct {
@@ -44,7 +46,7 @@ func (tx *Tx) init() {
 }
 
 func NewClient(config *xsql.Config) (*Client, error) {
-	db, err := xsql.NewMySQL(config)
+	db, err := mysql.NewDB(config)
 	if err != nil {
 		return nil, err
 	}
@@ -80,19 +82,23 @@ type AllTypeTableClient struct {
 	config *xsql.Config
 }
 
-func (c *AllTypeTableClient) Find() *alltypetable.SelectBuilder {
+func (c *AllTypeTableClient) Find() *xsql.SelectExecutor[*alltypetable.AllTypeTable] {
 	return alltypetable.Find(c.eq).Timeout(c.config.QueryTimeout)
 }
 
-func (c *AllTypeTableClient) Create() *alltypetable.InsertBuilder {
-	return alltypetable.Create(c.eq).Timeout(c.config.ExecTimeout)
+func (c *AllTypeTableClient) Create() *alltypetable.Creater {
+	a := alltypetable.Create(c.eq)
+	a.Timeout(c.config.ExecTimeout)
+	return a
 }
 
-func (c *AllTypeTableClient) Update() *alltypetable.UpdateBuilder {
-	return alltypetable.Update(c.eq).Timeout(c.config.ExecTimeout)
+func (c *AllTypeTableClient) Update() *alltypetable.Updater {
+	a := alltypetable.Update(c.eq)
+	a.Timeout(c.config.ExecTimeout)
+	return a
 }
 
-func (c *AllTypeTableClient) Delete() *alltypetable.DeleteBuilder {
+func (c *AllTypeTableClient) Delete() *xsql.DeleteExecutor[*alltypetable.AllTypeTable] {
 	return alltypetable.Delete(c.eq).Timeout(c.config.ExecTimeout)
 }
 
@@ -101,18 +107,22 @@ type UserClient struct {
 	config *xsql.Config
 }
 
-func (c *UserClient) Find() *user.SelectBuilder {
+func (c *UserClient) Find() *xsql.SelectExecutor[*user.User] {
 	return user.Find(c.eq).Timeout(c.config.QueryTimeout)
 }
 
-func (c *UserClient) Create() *user.InsertBuilder {
-	return user.Create(c.eq).Timeout(c.config.ExecTimeout)
+func (c *UserClient) Create() *user.Creater {
+	a := user.Create(c.eq)
+	a.Timeout(c.config.ExecTimeout)
+	return a
 }
 
-func (c *UserClient) Update() *user.UpdateBuilder {
-	return user.Update(c.eq).Timeout(c.config.ExecTimeout)
+func (c *UserClient) Update() *user.Updater {
+	a := user.Update(c.eq)
+	a.Timeout(c.config.ExecTimeout)
+	return a
 }
 
-func (c *UserClient) Delete() *user.DeleteBuilder {
+func (c *UserClient) Delete() *xsql.DeleteExecutor[*user.User] {
 	return user.Delete(c.eq).Timeout(c.config.ExecTimeout)
 }

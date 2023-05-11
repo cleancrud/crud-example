@@ -7,12 +7,12 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/happycrud/crud-example/api"
-	"github.com/happycrud/crud-example/crud"
-	"github.com/happycrud/crud-example/crud/user"
-	"github.com/happycrud/crud-example/service"
+	"github.com/cleancrud/crud-example/api"
+	"github.com/cleancrud/crud-example/crud"
+	"github.com/cleancrud/crud-example/crud/user"
+	"github.com/cleancrud/crud-example/service"
 
-	"github.com/happycrud/crud/xsql"
+	"github.com/cleancrud/crud/xsql"
 )
 
 // linux   protoc  -I . -I /usr/local/include --go_out=. --go-grpc_out=.  user.api.proto
@@ -88,8 +88,8 @@ func User() {
 	au, err := user.
 		Find(db).
 		Where(user.Or(
-			user.IdGT(10),
-			user.NameEQ("testb"),
+			user.IdOp.GT(10),
+			user.NameOp.EQ("testb"),
 		)).
 		Offset(0).
 		Limit(3).
@@ -102,8 +102,8 @@ func User() {
 		Find(db).
 		Count(xsql.Distinct(user.Name)).
 		Where(user.Or(
-			user.IdGT(10),
-			user.NameEQ("testb"),
+			user.IdOp.GT(10),
+			user.NameOp.EQ("testb"),
 		)).
 		Int64(ctx)
 
@@ -113,8 +113,8 @@ func User() {
 		Find(db).
 		Select(user.Columns()...).
 		Where(user.Or(
-			user.IdGT(10),
-			user.NameEQ("testb"),
+			user.IdOp.GT(10),
+			user.NameOp.EQ("testb"),
 		)).
 		All(ctx)
 
@@ -124,8 +124,8 @@ func User() {
 		Find(db).
 		Select(xsql.Sum(user.Age)).
 		Where(user.Or(
-			user.IdGT(10),
-			user.NameEQ("testb"),
+			user.IdOp.GT(10),
+			user.NameOp.EQ("testb"),
 		)).
 		Int64(ctx)
 
@@ -135,7 +135,7 @@ func User() {
 		Update(db).
 		SetAge(100).
 		SetName("java").
-		Where(user.IdEQ(1)).
+		Where(user.IdOp.EQ(1)).
 		Save(ctx)
 	fmt.Println(effect, err)
 
@@ -143,7 +143,7 @@ func User() {
 		Update(db).
 		AddAge(100).
 		SetName("java").
-		Where(user.IdEQ(5)).
+		Where(user.IdOp.EQ(5)).
 		Save(ctx)
 
 	fmt.Println(effect, err)
@@ -151,8 +151,8 @@ func User() {
 	effect, err = user.
 		Delete(db).
 		Where(user.And(
-			user.IdEQ(3),
-			user.IdIn(1, 3),
+			user.IdOp.EQ(3),
+			user.IdOp.In(1, 3),
 		)).
 		Exec(ctx)
 
@@ -160,7 +160,7 @@ func User() {
 
 	effect, err = user.
 		Delete(db).
-		Where(user.IdEQ(2)).
+		Where(user.IdOp.EQ(2)).
 		Exec(ctx)
 
 	fmt.Println(effect, err)
@@ -184,7 +184,7 @@ func User() {
 	effect, err = user.
 		Update(tx).
 		SetAge(100).
-		Where(user.IdEQ(1)).
+		Where(user.IdOp.EQ(1)).
 		Save(ctx)
 	if err != nil {
 		tx.Rollback()
@@ -198,14 +198,14 @@ func UserSelect() {
 	us, _ := user.Find(db).
 		Select().
 		Where(
-			user.AgeGT(10),
+			user.AgeOp.GT(10),
 		).
 		All(ctx)
 
 	us2, err := user.Find(db).
 		Select(user.Columns()...).
 		Where(
-			user.AgeGT(10),
+			user.AgeOp.GT(10),
 		).
 		All(ctx)
 	fmt.Println(us, us2, err)

@@ -3,10 +3,10 @@ package service
 import (
 	"context"
 
+	"github.com/cleancrud/crud-example/api"
 	"github.com/golang-jwt/jwt/v4"
 	grpc_auth "github.com/grpc-ecosystem/go-grpc-middleware/auth"
 	grpc_ctxtags "github.com/grpc-ecosystem/go-grpc-middleware/tags"
-	"github.com/happycrud/crud-example/api"
 	"google.golang.org/grpc/codes"
 
 	"google.golang.org/grpc/status"

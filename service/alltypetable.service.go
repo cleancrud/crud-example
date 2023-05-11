@@ -2,15 +2,14 @@ package service
 
 import (
 	"context"
+	"github.com/cleancrud/crud-example/api"
+	"github.com/cleancrud/crud-example/crud"
+	"github.com/cleancrud/crud-example/crud/alltypetable"
 	"math"
 	"strings"
 	"time"
 
-	"github.com/happycrud/crud-example/api"
-	"github.com/happycrud/crud-example/crud"
-	"github.com/happycrud/crud-example/crud/alltypetable"
-
-	"github.com/happycrud/crud/xsql"
+	"github.com/cleancrud/crud/xsql"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/emptypb"
@@ -84,7 +83,7 @@ func (s *AllTypeTableServiceImpl) CreateAllTypeTable(ctx context.Context, req *a
 	a2, err := s.Client.Master.AllTypeTable.
 		Find().
 		Where(
-			alltypetable.IdEQ(a.Id),
+			alltypetable.IdOp.EQ(a.Id),
 		).
 		One(ctx)
 	if err != nil {
@@ -98,7 +97,7 @@ func (s *AllTypeTableServiceImpl) DeleteAllTypeTable(ctx context.Context, req *a
 	_, err := s.Client.AllTypeTable.
 		Delete().
 		Where(
-			alltypetable.IdEQ(req.GetId()),
+			alltypetable.IdOp.EQ(req.GetId()),
 		).
 		Exec(ctx)
 	if err != nil {
@@ -202,7 +201,7 @@ func (s *AllTypeTableServiceImpl) UpdateAllTypeTable(ctx context.Context, req *a
 	}
 	_, err := update.
 		Where(
-			alltypetable.IdEQ(req.GetAllTypeTable().GetId()),
+			alltypetable.IdOp.EQ(req.GetAllTypeTable().GetId()),
 		).
 		Save(ctx)
 	if err != nil {
@@ -212,7 +211,7 @@ func (s *AllTypeTableServiceImpl) UpdateAllTypeTable(ctx context.Context, req *a
 	a, err := s.Client.Master.AllTypeTable.
 		Find().
 		Where(
-			alltypetable.IdEQ(req.GetAllTypeTable().GetId()),
+			alltypetable.IdOp.EQ(req.GetAllTypeTable().GetId()),
 		).
 		One(ctx)
 	if err != nil {
@@ -226,7 +225,7 @@ func (s *AllTypeTableServiceImpl) GetAllTypeTable(ctx context.Context, req *api.
 	a, err := s.Client.AllTypeTable.
 		Find().
 		Where(
-			alltypetable.IdEQ(req.GetId()),
+			alltypetable.IdOp.EQ(req.GetId()),
 		).
 		One(ctx)
 	if err != nil {

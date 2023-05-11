@@ -6,11 +6,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/happycrud/crud-example/api"
-	"github.com/happycrud/crud-example/crud"
-	"github.com/happycrud/crud-example/crud/user"
+	"github.com/cleancrud/crud-example/api"
+	"github.com/cleancrud/crud-example/crud"
+	"github.com/cleancrud/crud-example/crud/user"
 
-	"github.com/happycrud/crud/xsql"
+	"github.com/cleancrud/crud/xsql"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/emptypb"
@@ -53,7 +53,7 @@ func (s *UserServiceImpl) CreateUser(ctx context.Context, req *api.User) (*api.U
 	a2, err := s.Client.Master.User.
 		Find().
 		Where(
-			user.IdEQ(a.Id),
+			user.IdOp.EQ(a.Id),
 		).
 		One(ctx)
 	if err != nil {
@@ -67,7 +67,7 @@ func (s *UserServiceImpl) DeleteUser(ctx context.Context, req *api.UserId) (*emp
 	_, err := s.Client.User.
 		Delete().
 		Where(
-			user.IdEQ(req.GetId()),
+			user.IdOp.EQ(req.GetId()),
 		).
 		Exec(ctx)
 	if err != nil {
@@ -109,7 +109,7 @@ func (s *UserServiceImpl) UpdateUser(ctx context.Context, req *api.UpdateUserReq
 	}
 	_, err := update.
 		Where(
-			user.IdEQ(req.GetUser().GetId()),
+			user.IdOp.EQ(req.GetUser().GetId()),
 		).
 		Save(ctx)
 	if err != nil {
@@ -119,7 +119,7 @@ func (s *UserServiceImpl) UpdateUser(ctx context.Context, req *api.UpdateUserReq
 	a, err := s.Client.Master.User.
 		Find().
 		Where(
-			user.IdEQ(req.GetUser().GetId()),
+			user.IdOp.EQ(req.GetUser().GetId()),
 		).
 		One(ctx)
 	if err != nil {
@@ -133,7 +133,7 @@ func (s *UserServiceImpl) GetUser(ctx context.Context, req *api.UserId) (*api.Us
 	a, err := s.Client.User.
 		Find().
 		Where(
-			user.IdEQ(req.GetId()),
+			user.IdOp.EQ(req.GetId()),
 		).
 		One(ctx)
 	if err != nil {
