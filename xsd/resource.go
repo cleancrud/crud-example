@@ -34,7 +34,7 @@ import (
 	"github.com/envoyproxy/go-control-plane/pkg/cache/v3"
 	"github.com/envoyproxy/go-control-plane/pkg/resource/v3"
 	"github.com/envoyproxy/go-control-plane/pkg/wellknown"
-	"github.com/happycrud/crud-example/discovery"
+	"github.com/happycrud/crud-grpc-gin-micro-service-example/discovery"
 )
 
 const (

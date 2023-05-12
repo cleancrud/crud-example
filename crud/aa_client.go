@@ -4,8 +4,8 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/happycrud/crud-example/crud/alltypetable"
-	"github.com/happycrud/crud-example/crud/user"
+	"github.com/happycrud/crud-grpc-gin-micro-service-example/crud/alltypetable"
+	"github.com/happycrud/crud-grpc-gin-micro-service-example/crud/user"
 	"github.com/happycrud/crud/xsql"
 
 	"github.com/happycrud/crud/xsql/mysql"

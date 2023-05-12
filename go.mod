@@ -1,4 +1,4 @@
-module github.com/happycrud/crud-example
+module github.com/happycrud/crud-grpc-gin-micro-service-example
 
 go 1.18
 

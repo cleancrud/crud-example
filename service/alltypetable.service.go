@@ -6,9 +6,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/happycrud/crud-example/api"
-	"github.com/happycrud/crud-example/crud"
-	"github.com/happycrud/crud-example/crud/alltypetable"
+	"github.com/happycrud/crud-grpc-gin-micro-service-example/api"
+	"github.com/happycrud/crud-grpc-gin-micro-service-example/crud"
+	"github.com/happycrud/crud-grpc-gin-micro-service-example/crud/alltypetable"
 
 	"github.com/happycrud/crud/xsql"
 	"google.golang.org/grpc/codes"

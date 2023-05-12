@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/happycrud/crud-example/api"
-	"github.com/happycrud/crud-example/discovery"
+	"github.com/happycrud/crud-grpc-gin-micro-service-example/api"
+	"github.com/happycrud/crud-grpc-gin-micro-service-example/discovery"
 	"google.golang.org/grpc"
 )
 

@@ -19,7 +19,7 @@ import (
 
 	"github.com/envoyproxy/go-control-plane/pkg/server/v3"
 	"github.com/envoyproxy/go-control-plane/pkg/test/v3"
-	example "github.com/happycrud/crud-example/xsd"
+	example "github.com/happycrud/crud-grpc-gin-micro-service-example/xsd"
 )
 
 var (

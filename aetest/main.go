@@ -7,10 +7,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/happycrud/crud-example/api"
-	"github.com/happycrud/crud-example/crud"
-	"github.com/happycrud/crud-example/crud/user"
-	"github.com/happycrud/crud-example/service"
+	"github.com/happycrud/crud-grpc-gin-micro-service-example/api"
+	"github.com/happycrud/crud-grpc-gin-micro-service-example/crud"
+	"github.com/happycrud/crud-grpc-gin-micro-service-example/crud/user"
+	"github.com/happycrud/crud-grpc-gin-micro-service-example/service"
 
 	"github.com/happycrud/crud/xsql"
 )

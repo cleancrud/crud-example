@@ -15,9 +15,9 @@ import (
 	"time"
 
 	grpc_auth "github.com/grpc-ecosystem/go-grpc-middleware/auth"
-	"github.com/happycrud/crud-example/api"
-	"github.com/happycrud/crud-example/crud"
-	"github.com/happycrud/crud-example/service"
+	"github.com/happycrud/crud-grpc-gin-micro-service-example/api"
+	"github.com/happycrud/crud-grpc-gin-micro-service-example/crud"
+	"github.com/happycrud/crud-grpc-gin-micro-service-example/service"
 	"github.com/improbable-eng/grpc-web/go/grpcweb"
 	"github.com/rs/cors"
 
@@ -42,7 +42,7 @@ var content embed.FS
 
 func init() {
 	flag.IntVar(&port, "port", 9000, "server listen on port")
-	flag.StringVar(&dsn, "dsn", "root:123456@tcp(127.0.0.1:3306)/test?parseTime=true&loc=Local", "mysql dsn github.com/happycrud/crud-example(root:123456@tcp(127.0.0.1:3306)/github.com/happycrud/crud-example?parseTime=true)")
+	flag.StringVar(&dsn, "dsn", "root:123456@tcp(127.0.0.1:3306)/test?parseTime=true&loc=Local", "mysql dsn github.com/happycrud/crud-grpc-gin-micro-service-example(root:123456@tcp(127.0.0.1:3306)/github.com/happycrud/crud-grpc-gin-micro-service-example?parseTime=true)")
 }
 func main() {
 	flag.Parse()
