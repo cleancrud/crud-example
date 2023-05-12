@@ -2,14 +2,15 @@ package service
 
 import (
 	"context"
-	"github.com/cleancrud/crud-example/api"
-	"github.com/cleancrud/crud-example/crud"
-	"github.com/cleancrud/crud-example/crud/alltypetable"
 	"math"
 	"strings"
 	"time"
 
-	"github.com/cleancrud/crud/xsql"
+	"github.com/happycrud/crud-example/api"
+	"github.com/happycrud/crud-example/crud"
+	"github.com/happycrud/crud-example/crud/alltypetable"
+
+	"github.com/happycrud/crud/xsql"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/emptypb"

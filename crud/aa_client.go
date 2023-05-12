@@ -4,11 +4,11 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/cleancrud/crud-example/crud/alltypetable"
-	"github.com/cleancrud/crud-example/crud/user"
-	"github.com/cleancrud/crud/xsql"
+	"github.com/happycrud/crud-example/crud/alltypetable"
+	"github.com/happycrud/crud-example/crud/user"
+	"github.com/happycrud/crud/xsql"
 
-	"github.com/cleancrud/crud/xsql/mysql"
+	"github.com/happycrud/crud/xsql/mysql"
 )
 
 type Client struct {
