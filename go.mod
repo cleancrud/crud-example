@@ -8,7 +8,7 @@ require (
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/golang-jwt/jwt/v4 v4.4.3
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
-	github.com/happycrud/crud v0.2.2
+	github.com/happycrud/crud v0.2.3
 	github.com/improbable-eng/grpc-web v0.15.0
 	github.com/rs/cors v1.8.3
 	github.com/soheilhy/cmux v0.1.5
